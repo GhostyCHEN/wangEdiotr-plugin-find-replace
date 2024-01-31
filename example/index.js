@@ -1,8 +1,8 @@
 import { createEditor, createToolbar, Boot } from '@wangeditor/editor'
-// import table from '../src/index'
+import module from '../src/index'
 
 // 注册
-// Boot.registerModule(table)
+Boot.registerModule(module)
 
 // 编辑器配置
 const editorConfig = {
@@ -23,6 +23,12 @@ const editor = createEditor({
 const toolbar = createToolbar({
   editor,
   selector: '#toolbar-container',
+  config: {
+    insertKeys: {
+      index: 0,
+      keys: ['findReplace'],
+    },
+  },
 })
 
 // @ts-ignore 为了便于调试，暴露到 window

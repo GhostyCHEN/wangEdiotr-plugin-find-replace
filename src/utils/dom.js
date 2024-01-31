@@ -6,6 +6,7 @@
 import $, {
   append,
   on,
+  is,
   focus,
   attr,
   val,
@@ -30,6 +31,7 @@ if (removeClass) $.fn.removeClass = removeClass
 if (children) $.fn.children = children
 if (each) $.fn.each = each
 if (find) $.fn.find = find
+if (is) $.fn.is = is
 
 export default $
 

@@ -1,0 +1,63 @@
+.w-e-modal:has(.fr_title){
+  top: 8px !important;
+  left: unset !important;
+  right: 8px !important;
+  padding: 10px !important;
+}
+.fr_title{
+  font-size: 16px;
+  color: #222f3e;
+  margin-bottom: 16px;
+}
+.fr_find{
+  display: flex;
+  align-items: center;
+  height: 32px;
+  margin-bottom: 5px;
+  input{
+    flex: 1;
+    height: 100%;
+  }
+  span{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    background-color: #f0f0f0;
+    color: rgba(34,47,62,.5);
+    margin-left: 5px;
+    border-radius: 4px;
+    cursor: not-allowed;
+  }
+}
+
+.fr_replace{
+  display: flex;
+  align-items: center;
+  height: 32px;
+  input{
+    height: 100%;
+  }
+}
+.fr_opera{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 16px;
+  .button{
+    display: inline-flex;
+    align-items: center;
+    color: rgba(34,47,62,.5);
+    background-color: #f0f0f0;
+    height: 32px;
+    padding: 0 10px;
+    margin-left: 12px;
+    cursor: not-allowed;
+    &:first-child{
+      color: #fff;
+      background-color: #207ab7;
+      cursor: pointer;
+    }
+  }
+}
