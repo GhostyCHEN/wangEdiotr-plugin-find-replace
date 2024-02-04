@@ -24,10 +24,17 @@
     align-items: center;
     width: 32px;
     height: 32px;
-    background-color: #f0f0f0;
+    background-color: transparent;
     color: rgba(34,47,62,.5);
     margin-left: 5px;
     border-radius: 4px;
+    cursor: pointer;
+    &:hover:not(._searchDisabled){
+      background-color: #e3e3e3
+    }
+  }
+  ._searchDisabled{
+    background-color: #f0f0f0;
     cursor: not-allowed;
   }
 }
@@ -60,4 +67,14 @@
       cursor: pointer;
     }
   }
+}
+
+.__highlight{
+  background: #aaa;
+  color: #fff;
+}
+.selected-highlight{
+
+  background: #39f;
+  color: #fff;
 }

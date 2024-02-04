@@ -172,7 +172,7 @@ export const highlightSearchResult = (searchResult, highlightClass) => {
       heghlightResult.push(new HighlightResult(highLightNode, highlightClass))
     }
   })
-  return HighlightResult
+  return heghlightResult
 }
 
 export const highlight = (
@@ -204,7 +204,7 @@ export const highlight = (
 }
 
 export const removeSelectMatchKey = () => {
-  let key = document.querySelector('sapn.selected-highlight')
+  let key = document.querySelector('span.selected-highlight')
   if (!key) return
   if (key.classList.length > 1) {
     key.classList.remove('selected-highlight')
@@ -223,7 +223,6 @@ export const selectMatch = (result, index, options) => {
   let data = result[index]
   let { selectedClass } = options || { selectedClass: 'selected-highlight' }
   selectedClass = selectedClass || 'selected-highlight'
-
   if (data instanceof SearchResult) {
     const { node, start, end } = data
     if (!node) return
@@ -248,4 +247,4 @@ export const selectMatch = (result, index, options) => {
 }
 
 // 替换
-// export const replace = () => {}
+export const replace = () => {}
