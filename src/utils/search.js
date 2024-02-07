@@ -203,15 +203,16 @@ export const highlight = (
   return highlightSearchResult(searchResult, highlightClass)
 }
 
-export const removeSelectMatchKey = () => {
+export const removeSelectMatchKey = value => {
   let key = document.querySelector('span.selected-highlight')
   if (!key) return
   if (key.classList.length > 1) {
     key.classList.remove('selected-highlight')
+    value && key.replaceWith(value)
     return
   } else if (key.classList.length === 1) {
     let parent = key.parentElement
-    key.replaceWith(key.textContent)
+    key.replaceWith(value || key.textContent)
     parent.normalize()
     return
   }
@@ -245,6 +246,3 @@ export const selectMatch = (result, index, options) => {
     return node
   }
 }
-
-// 替换
-export const replace = () => {}

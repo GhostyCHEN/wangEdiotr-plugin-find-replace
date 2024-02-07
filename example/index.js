@@ -24,6 +24,27 @@ const editor = createEditor({
   <p>      还有一点ProtocolResolver spring并没有提供他的实现类，所有一般情况下DefaultResourceLoader只能读取本机文件系统下的资源</p>
   <p>DefaultResourceLoader内部维护这一个ClassPathContextResource，一般情况都是new一个ClassPathContextResource返回</p>`,
 })
+editor.on('scroll', () => {
+  editor.emit('modalOrPanelShow', {})
+})
+editor.on('modalOrPanelShow', modalOrPanel => {
+  if (modalOrPanel.type !== 'modal') return
+
+  const { $elem } = modalOrPanel
+  const width = $elem.width()
+  const height = $elem.height()
+
+  $elem.css({
+    left: '50%',
+    top: '50%',
+    marginLeft: `-${width / 2}px`,
+    marginTop: `-${height / 2}px`,
+    zIndex: 1000,
+  })
+})
+editor.on('modalOrPanelHide', () => {
+  console.log('hide')
+})
 const toolbar = createToolbar({
   editor,
   selector: '#toolbar-container',
@@ -32,6 +53,7 @@ const toolbar = createToolbar({
       index: 0,
       keys: ['findReplace'],
     },
+    modalAppendToBody: true,
   },
 })
 

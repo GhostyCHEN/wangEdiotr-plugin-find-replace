@@ -1,7 +1,12 @@
 import { FIND_REPLACE_SVG } from '../../constants/icon-svg'
 import { DomEditor } from '@wangeditor/editor'
 import $ from '../../utils/dom'
-import { highlight, selectMatch, removeHighlightKey } from '../../utils/search'
+import {
+  highlight,
+  selectMatch,
+  removeHighlightKey,
+  removeSelectMatchKey,
+} from '../../utils/search'
 
 class FindReplace {
   constructor() {
@@ -106,12 +111,14 @@ class FindReplace {
     $find.on('click', e => {
       e.preventDefault()
       let node = document.querySelector(`#${nodeId}`)
+
       if (!node) return
       const findValue = $(`#${findInputId}`).val()
       if (!findValue) return
       this.searchMatches.result = highlight(node, findValue)
       this.searchMatches.index = 0
       selectMatch(this.searchMatches.result, this.searchMatches.index)
+      console.log(this.searchMatches)
       if (this.searchMatches.result.length <= 1) {
         $prev.addClass('_searchDisabled')
         $next.addClass('_searchDisabled')
@@ -120,9 +127,11 @@ class FindReplace {
         $next.removeClass('_searchDisabled')
       }
     })
-    // 弹窗关闭时移除所有高亮
-    editor.on('modalOrPanelHide', () => {
-      this.reset(editor)
+    $replace.on('click', e => {
+      e.preventDefault()
+      const replaceValue = $(`#${replaceInputId}`).val()
+      if (!replaceValue) return
+      removeSelectMatchKey(replaceValue)
     })
     return $container[0]
   }
